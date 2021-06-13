@@ -3,7 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 import psutil
 from time import sleep
-import threading
+from threading import Timer
 
 
 def main():
@@ -15,8 +15,7 @@ def main():
     h = int((yukseklik / 2) - (py / 2))
     # penceremiz 370*550 boyutunda ve w ile h konumunda açılacak.
     ekran = "{}x{}+{}+{}".format(px, py, w, h)
-    sayac = threading.Thread(target=degerler)
-    sayac.start()
+    t.start()
     Pencere.geometry(ekran)
     Pencere.mainloop()
 
@@ -26,6 +25,7 @@ def degerler():
     while 1:
         global STOP
         if STOP:
+            t.cancel()
             break
         else:
             cpu_count = psutil.cpu_count()
@@ -76,6 +76,8 @@ count_label.place(x=10, y=50)
 count_label2 = Label(Pencere, text="3")
 count_label2.place(x=100, y=50)
 
+# t timer n saniyede bir kez kodu çalıştırıcak
+t = Timer(1, degerler)
 # çalışan kanalın işlemini sonlandırmak için kontrol edebileceğimiz global bir değişken
 STOP = False
 
