@@ -9,8 +9,8 @@ import threading
 def main():
     genislik = Pencere.winfo_screenwidth()
     yukseklik = Pencere.winfo_screenheight()
-    px = 370  # pencere yüksekliği
-    py = 250  # # pencere genişliği
+    px = 220  # pencere yüksekliği
+    py = 80  # # pencere genişliği
     w = int((genislik / 2) - (px / 2))
     h = int((yukseklik / 2) - (py / 2))
     # penceremiz 370*550 boyutunda ve w ile h konumunda açılacak.
